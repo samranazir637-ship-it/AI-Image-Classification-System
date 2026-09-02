@@ -1,0 +1,16 @@
+[
+  {
+    "image_name": "Saved_Frame_from_Smartphone_and_202605040407.jpeg",
+    "label": "Food",
+    "confidence": 60.0,
+    "timestamp": "2026-09-02 15:23:19",
+    "size": "720x1280"
+  },
+  {
+    "image_name": "cartoon.PNG",
+    "label": "Flower",
+    "confidence": 60.0,
+    "timestamp": "2026-09-02 15:26:51",
+    "size": "328x396"
+  }
+]
