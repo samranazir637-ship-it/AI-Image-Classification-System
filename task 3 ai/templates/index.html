@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Image Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo">VisionAI</div>
+      <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Week 3 AI Project</p>
+          <h1>AI Image Classification System</h1>
+          <p class="lead">
+            Upload an image and classify it into defined categories using an intelligent
+            vision pipeline with result tracking and evaluation insights.
+          </p>
+          <div class="stats-row">
+            <div class="mini-card">
+              <strong>{{ summary.total_predictions if summary.total_predictions else 0 }}</strong>
+              <span>Predictions</span>
+            </div>
+            <div class="mini-card">
+              <strong>{{ summary.average_confidence if summary.average_confidence else 0 }}%</strong>
+              <span>Avg Confidence</span>
+            </div>
+            <div class="mini-card">
+              <strong>{{ summary.most_common_label if summary.most_common_label else 'N/A' }}</strong>
+              <span>Top Class</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="upload-panel">
+          <h2>Upload an Image</h2>
+          <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+            <label class="upload-box" for="imageInput">
+              <input id="imageInput" type="file" name="image" accept="image/*" required />
+              <span>Choose image</span>
+            </label>
+            <button type="submit">Classify Image</button>
+          </form>
+
+          <div class="category-list">
+            <h3>Supported Categories</h3>
+            <ul>
+              {% for category in categories %}
+                <li>{{ category }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-grid">
+        <div class="feature-card">
+          <h3>Image Upload</h3>
+          <p>Upload JPG, PNG, or other common image formats for immediate analysis.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Prediction Confidence</h3>
+          <p>Each result includes a score that reflects the classifier’s confidence.</p>
+        </div>
+        <div class="feature-card">
+          <h3>History Tracking</h3>
+          <p>Keep a record of uploaded images, classifications, and timestamps.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Model Evaluation</h3>
+          <p>Monitor accuracy, precision, recall, and F1 score for validation results.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
